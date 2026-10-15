@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -151,153 +152,162 @@
         }
     </style>
 </head>
+
 <body>
+    <div class="quiz-container">
+        <div id="quiz-screen">
+            <h1 id="quiz-title">Quiz: Toleranser & Ritningsläsning</h1>
 
-<div class="quiz-container">
-    <div id="quiz-screen">
-        <h1 id="quiz-title">Quiz: Toleranser & Ritningsläsning</h1>
-        
-        <!-- Fråga 1 -->
-        <div class="question active" data-correct="1">
-            <div class="question-text">1. Vad anger bokstaven i en ISO-toleransbeteckning (t.ex. "h" i 25h7)?</div>
-            <div class="options">
-                <button class="option-btn" onclick="checkAnswer(this, 0)">Hur stor toleransvidden är i mikrometer.</button>
-                <button class="option-btn" onclick="checkAnswer(this, 1)">Var toleransintervalet är placerat i förhållande till basmåttet.</button>
-                <button class="option-btn" onclick="checkAnswer(this, 2)">Vilket material delen ska tillverkas av.</button>
-                <button class="option-btn" onclick="checkAnswer(this, 3)">Vilken maskin som ska använda verktyget.</button>
+            <!-- Fråga 1 -->
+            <div class="question active" data-correct="1">
+                <div class="question-text">1. Vad anger bokstaven i en ISO-toleransbeteckning (t.ex. "h" i 25h7)?</div>
+                <div class="options">
+                    <button class="option-btn" onclick="checkAnswer(this, 0)">Hur stor toleransvidden är i
+                        mikrometer.</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 1)">Var toleransintervalet är placerat i
+                        förhållande till basmåttet.</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 2)">Vilket material delen ska tillverkas
+                        av.</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 3)">Vilken maskin som ska använda
+                        verktyget.</button>
+                </div>
+            </div>
+
+            <!-- Fråga 2 -->
+            <div class="question" data-correct="0">
+                <div class="question-text">2. Enligt standarden används stora och små bokstäver för olika saker. Vad
+                    gäller för ett hål (invändigt mått)?</div>
+                <div class="options">
+                    <button class="option-btn" onclick="checkAnswer(this, 0)">Det skrivs alltid med STOR bokstav (t.ex.
+                        H7).</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 1)">Det skrivs alltid med liten bokstav (t.ex.
+                        h7).</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 2)">Det spelar ingen roll, båda
+                        fungerar.</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 3)">Bokstäver används bara för utvändiga
+                        axlar.</button>
+                </div>
+            </div>
+
+            <!-- Fråga 3 -->
+            <div class="question" data-correct="2">
+                <div class="question-text">3. Hur mycket är 25 mikrometer (µm) omvandlat till millimeter (mm)?</div>
+                <div class="options">
+                    <button class="option-btn" onclick="checkAnswer(this, 0)">0,25 mm</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 1)">0,025 µm</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 2)">0,025 mm</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 3)">0,0025 mm</button>
+                </div>
+            </div>
+
+            <!-- Fråga 4 -->
+            <div class="question" data-correct="1">
+                <div class="question-text">4. Om du kollar i Tabell 54 för grundtoleransvidder: Vilken av följande
+                    IT-grader ger det mest exakta och snäva måttet?</div>
+                <div class="options">
+                    <button class="option-btn" onclick="checkAnswer(this, 0)">IT11</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 1)">IT01</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 2)">IT7</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 3)">IT17</button>
+                </div>
+            </div>
+
+            <!-- Fråga 5 -->
+            <div class="question" data-correct="3">
+                <div class="question-text">5. Om en ritning kräver måttet "40 h7" och tabellen ger en toleransvidd på 25
+                    µm (0,025 mm). Eftersom det är ett litet "h" går toleransen nedåt från noll. Vilket blir minmåttet?
+                </div>
+                <div class="options">
+                    <button class="option-btn" onclick="checkAnswer(this, 0)">40,025 mm</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 1)">40,000 mm</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 2)">39,995 mm</button>
+                    <button class="option-btn" onclick="checkAnswer(this, 3)">39,975 mm</button>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="progress">Fråga <span id="current-idx">1</span> av 5</div>
+                <button class="next-btn" id="next-btn" onclick="nextQuestion()">Nästa fråga</button>
             </div>
         </div>
 
-        <!-- Fråga 2 -->
-        <div class="question" data-correct="0">
-            <div class="question-text">2. Enligt standarden används stora och små bokstäver för olika saker. Vad gäller för ett hål (invändigt mått)?</div>
-            <div class="options">
-                <button class="option-btn" onclick="checkAnswer(this, 0)">Det skrivs alltid med STOR bokstav (t.ex. H7).</button>
-                <button class="option-btn" onclick="checkAnswer(this, 1)">Det skrivs alltid med liten bokstav (t.ex. h7).</button>
-                <button class="option-btn" onclick="checkAnswer(this, 2)">Det spelar ingen roll, båda fungerar.</button>
-                <button class="option-btn" onclick="checkAnswer(this, 3)">Bokstäver används bara för utvändiga axlar.</button>
-            </div>
-        </div>
-
-        <!-- Fråga 3 -->
-        <div class="question" data-correct="2">
-            <div class="question-text">3. Hur mycket är 25 mikrometer (µm) omvandlat till millimeter (mm)?</div>
-            <div class="options">
-                <button class="option-btn" onclick="checkAnswer(this, 0)">0,25 mm</button>
-                <button class="option-btn" onclick="checkAnswer(this, 1)">0,025 µm</button>
-                <button class="option-btn" onclick="checkAnswer(this, 2)">0,025 mm</button>
-                <button class="option-btn" onclick="checkAnswer(this, 3)">0,0025 mm</button>
-            </div>
-        </div>
-
-        <!-- Fråga 4 -->
-        <div class="question" data-correct="1">
-            <div class="question-text">4. Om du kollar i Tabell 54 för grundtoleransvidder: Vilken av följande IT-grader ger det mest exakta och snäva måttet?</div>
-            <div class="options">
-                <button class="option-btn" onclick="checkAnswer(this, 0)">IT11</button>
-                <button class="option-btn" onclick="checkAnswer(this, 1)">IT01</button>
-                <button class="option-btn" onclick="checkAnswer(this, 2)">IT7</button>
-                <button class="option-btn" onclick="checkAnswer(this, 3)">IT17</button>
-            </div>
-        </div>
-
-        <!-- Fråga 5 -->
-        <div class="question" data-correct="3">
-            <div class="question-text">5. Om en ritning kräver måttet "40 h7" och tabellen ger en toleransvidd på 25 µm (0,025 mm). Eftersom det är ett litet "h" går toleransen nedåt från noll. Vilket blir minmåttet?</div>
-            <div class="options">
-                <button class="option-btn" onclick="checkAnswer(this, 0)">40,025 mm</button>
-                <button class="option-btn" onclick="checkAnswer(this, 1)">40,000 mm</button>
-                <button class="option-btn" onclick="checkAnswer(this, 2)">39,995 mm</button>
-                <button class="option-btn" onclick="checkAnswer(this, 3)">39,975 mm</button>
-            </div>
-        </div>
-
-        <div class="footer">
-            <div class="progress">Fråga <span id="current-idx">1</span> av 5</div>
-            <button class="next-btn" id="next-btn" onclick="nextQuestion()">Nästa fråga</button>
+        <div id="result-screen">
+            <h2>Quizet är klart!</h2>
+            <p>Ditt resultat blev:</p>
+            <div class="score"><span id="final-score">0</span> / 5</div>
+            <p id="feedback-text"></p>
+            <button class="restart-btn" onclick="restartQuiz()">Gör om quizet</button>
         </div>
     </div>
 
-    <div id="result-screen">
-        <h2>Quizet är klart!</h2>
-        <p>Ditt resultat blev:</p>
-        <div class="score"><span id="final-score">0</span> / 5</div>
-        <p id="feedback-text"></p>
-        <button class="restart-btn" onclick="restartQuiz()">Gör om quizet</button>
-    </div>
-</div>
+    <script>
+        let currentQuestionIdx = 0;
+        let score = 0;
+        const questions = document.querySelectorAll('.question');
+        const nextBtn = document.getElementById('next-btn');
+        const currentIdxEl = document.getElementById('current-idx');
 
-<script>
-    let currentQuestionIdx = 0;
-    let score = 0;
-    const questions = document.querySelectorAll('.question');
-    const nextBtn = document.getElementById('next-btn');
-    const currentIdxEl = document.getElementById('current-idx');
-
-    function checkAnswer(selectedBtn, optionIdx) {
-        const currentQuestion = questions[currentQuestionIdx];
-        const correctIdx = parseInt(currentQuestion.getAttribute('data-correct'));
-        const buttons = currentQuestion.querySelectorAll('.option-btn');
-
-        // Avaktivera alla knappar i denna fråga efter klick
-        buttons.forEach(btn => btn.disabled = true);
-
-        if (optionIdx === correctIdx) {
-            selectedBtn.classList.add('correct');
-            score++;
-        } else {
-            selectedBtn.classList.add('wrong');
-            buttons[correctIdx].classList.add('correct'); // Visa rätt svar
+        function checkAnswer(selectedBtn, optionIdx) {
+            const currentQuestion = questions[currentQuestionIdx];
+            const correctIdx = parseInt(currentQuestion.getAttribute('data-correct'));
+            const buttons = currentQuestion.querySelectorAll('.option-btn');
+            // Avaktivera alla knappar i denna fråga efter klick
+            buttons.forEach(btn => btn.disabled = true);
+            if (optionIdx === correctIdx) {
+                selectedBtn.classList.add('correct');
+                score++;
+            } else {
+                selectedBtn.classList.add('wrong');
+                buttons[correctIdx].classList.add('correct'); // Visa rätt svar
+            }
+            nextBtn.style.display = 'block';
         }
 
-        nextBtn.style.display = 'block';
-    }
-
-    function nextQuestion() {
-        questions[currentQuestionIdx].classList.remove('active');
-        currentQuestionIdx++;
-        nextBtn.style.display = 'none';
-
-        if (currentQuestionIdx < questions.length) {
-            questions[currentQuestionIdx].classList.add('active');
-            currentIdxEl.textContent = currentQuestionIdx + 1;
-        } else {
-            showResults();
+        function nextQuestion() {
+            questions[currentQuestionIdx].classList.remove('active');
+            currentQuestionIdx++;
+            nextBtn.style.display = 'none';
+            if (currentQuestionIdx < questions.length) {
+                questions[currentQuestionIdx].classList.add('active');
+                currentIdxEl.textContent = currentQuestionIdx + 1;
+            } else {
+                showResults();
+            }
         }
-    }
 
-    function showResults() {
-        document.getElementById('quiz-screen').style.display = 'none';
-        document.getElementById('result-screen').style.display = 'block';
-        document.getElementById('final-score').textContent = score;
+        function showResults() {
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('result-screen').style.display = 'block';
+            document.getElementById('final-score').textContent = score;
+            const feedbackEl = document.getElementById('feedback-text');
+            if (score === 5) {
+                feedbackEl.textContent = "Fantastiskt! Full pott. Du har stenkoll på toleranser och ritningsregler!";
+            } else if (score >= 3) {
+                feedbackEl.textContent = "Bra jobbat! Du har en god förståelse för grunderna.";
+            } else {
+                feedbackEl.textContent = "Du behöver öva lite mer på hur tabellen läses och hur koderna används.";
+            }
+        }
 
-        const feedbackEl = document.getElementById('feedback-text');
-        if (score === 5) {
-            feedbackEl.textContent = "Fantastiskt! Full pott. Du har stenkoll på toleranser och ritningsregler!";
-        } else if (score >= 3) {
-feedbackEl.textContent = "Bra jobbat! Du har en god förståelse för grunderna.";
-} else {
-feedbackEl.textContent = "Du behöver öva lite mer på hur tabellen läses och hur koderna används.";
-}
-}
-function restartQuiz() {
-score = 0;
-currentQuestionIdx = 0;
-currentIdxEl.textContent = 1;
-// Återställ knappar
-questions.forEach(q => {
-q.classList.remove('active');
-const buttons = q.querySelectorAll('.option-btn');
-buttons.forEach(btn => {
-btn.disabled = false;
-btn.classList.remove('correct', 'wrong');
-});
-});
-questions[0].classList.add('active');
-document.getElementById('quiz-screen').style.display = 'block';
-document.getElementById('result-screen').style.display = 'none';
-nextBtn.style.display = 'none';
-}
-</script>
+        function restartQuiz() {
+            score = 0;
+            currentQuestionIdx = 0;
+            currentIdxEl.textContent = 1;
+            // Återställ knappar
+            questions.forEach(q => {
+                q.classList.remove('active');
+                const buttons = q.querySelectorAll('.option-btn');
+                buttons.forEach(btn => {
+                    btn.disabled = false;
+                    btn.classList.remove('correct', 'wrong');
+                });
+            });
+            questions[0].classList.add('active');
+            document.getElementById('quiz-screen').style.display = 'block';
+            document.getElementById('result-screen').style.display = 'none';
+            nextBtn.style.display = 'none';
+        }
+    </script>
 </body>
+
 </html>
